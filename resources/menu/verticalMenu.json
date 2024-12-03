@@ -1,0 +1,153 @@
+{
+  "menu": [
+    {
+      "url": "/dashboard",
+      "name": "Dashboard",
+      "icon": "menu-icon tf-icons bx bx-home-smile",
+      "slug": "dashboard",
+      "permission": ["admin", "owner"]
+    },
+    {
+      "name": "User Accounts",
+      "icon": "menu-icon tf-icons bx bx-user",
+      "slug": "accounts",
+      "permission": ["admin"],
+      "submenu": [
+        {
+          "url": "/accounts",
+          "name": "List of Accounts",
+          "slug": "accounts.index"
+        },
+        {
+          "url": "/accounts/create",
+          "name": "Create Account",
+          "slug": "accounts.create"
+        }
+      ]
+    },
+    {
+      "name": "Establishments",
+      "icon": "menu-icon tf-icons bx bx-store",
+      "slug": "establishments",
+      "permission": ["admin"],
+      "submenu": [
+        {
+          "url": "/establishments",
+          "name": "List of Establishments",
+          "slug": "establishments.index"
+        },
+        {
+          "url": "/establishments/create",
+          "name": "Register Establishment",
+          "slug": "establishments.create"
+        }
+      ]
+    },
+    {
+      "name": "Request of Establishments",
+      "icon": "menu-icon tf-icons bx bx-store",
+      "slug": "requests",
+      "permission": ["admin"],
+      "submenu": [
+        {
+          "url": "/requests",
+          "name": "Request/Inactive List",
+          "slug": "requests.index"
+        }
+      ]
+    },
+    {
+      "name": "Business Types",
+      "icon": "menu-icon tf-icons bx bx-buildings",
+      "slug": "business-types",
+      "permission": ["admin"],
+      "submenu": [
+        {
+          "url": "/business-types",
+          "name": "List of Business Type",
+          "slug": "business-types.index"
+        },
+        {
+          "url": "/business-types/create",
+          "name": "Create Business Type",
+          "slug": "business-types.create"
+        }
+      ]
+    },
+    {
+      "name": "Establishment Events",
+      "icon": "menu-icon tf-icons bx bx-calendar",
+      "slug": "events",
+      "permission": ["admin"],
+      "submenu": [
+        {
+          "url": "/events",
+          "name": "List of Events",
+          "slug": "events.index"
+        },
+        {
+          "url": "/events/create",
+          "name": "Create Establishment Event",
+          "slug": "events.create"
+        }
+      ]
+    },
+    {
+      "name": "News",
+      "icon": "menu-icon tf-icons bx bx-news",
+      "slug": "news",
+      "permission": ["admin"],
+      "submenu": [
+        {
+          "url": "/news",
+          "name": "List of News",
+          "slug": "news.index"
+        },
+        {
+          "url": "/news/create",
+          "name": "Create News",
+          "slug": "news.create"
+        }
+      ]
+    },
+    {
+      "name": "Establishment Offers",
+      "icon": "menu-icon tf-icons bx bx-list-minus",
+      "slug": "offerings",
+      "permission": ["admin"],
+      "submenu": [
+        {
+          "url": "/offerings",
+          "name": "List of Offers",
+          "slug": "offerings.index"
+        },
+        {
+          "url": "/offerings/create",
+          "name": "Create Establishment Offer",
+          "slug": "offerings.create"
+        }
+      ]
+    },
+    {
+      "url": "/my-establishment",
+      "name": "Establishment Information",
+      "icon": "menu-icon tf-icons bx bx-store",
+      "slug": "owners.establishment-index",
+      "permission": ["owner"]
+    },
+    {
+      "url": "/offers",
+      "name": "Establishment Offers",
+      "icon": "menu-icon tf-icons bx bx-list-minus",
+      "slug": "owners.establishment-offers",
+      "permission": ["owner"]
+    },
+    {
+      "url": "/my-galleries",
+      "name": "Establishment Galleries",
+      "icon": "menu-icon tf-icons bx bx-images",
+      "slug": "owners.establishment-galleries",
+      "permission": ["owner"]
+    }
+  ]
+}
