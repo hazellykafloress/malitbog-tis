@@ -7,6 +7,7 @@ use App\Models\Establishment;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Storage;
 
 class EstablishmentController extends Controller
 {
@@ -51,7 +52,7 @@ class EstablishmentController extends Controller
 
     try {
       // Create establishment
-      Establishment::create([
+      $establishment = Establishment::create([
         'user_id' => $request->establishment_owner,
         'name' => $request->establishment_name,
         'description' => $request->establishment_description,
@@ -62,10 +63,15 @@ class EstablishmentController extends Controller
         'contact_number' => $request->establishment_contact_number,
         'business_type_id' => $request->establishment_type_of_business,
       ]);
-
+      
+      
+      if ($request->has('image')) {
+        $path = Storage::put('/public/establishments', $request->image);
+        $establishment->update(['path' => $path]);
+      }
       return redirect(route('establishments.index'))->with('success', 'Establishment owner and establishment created successfully.');
     } catch (\Exception $e) {
-      return back()->with('error', 'Error creating establishment: ' . $e->getMessage());
+      return redirect(route('establishments.index'))->with('error', 'Error creating establishment.');
     }
   }
 
@@ -87,18 +93,34 @@ class EstablishmentController extends Controller
       'establishment_mode_of_access' => 'required',
       'establishment_type_of_business' => 'required'
     ]);
-
-    $establishment->update([
-      'user_id' => $request->establishment_owner,
-      'name' => $request->establishment_name,
-      'description' => $request->establishment_description,
-      'address' => $request->establishment_address,
-      'geolocation_longitude' => $request->establishment_geolocation_longitude,
-      'geolocation_latitude' => $request->establishment_geolocation_latitude,
-      'mode_of_access' => implode(', ', $request->establishment_mode_of_access),
-      'contact_number' => $request->establishment_contact_number,
-      'business_type_id' => $request->establishment_type_of_business
-    ]);
+    if ($request->has('image')) {
+      $path = Storage::put('/public/establishments', $request->image);
+      $establishment->update([
+        'user_id' => $request->establishment_owner,
+        'name' => $request->establishment_name,
+        'description' => $request->establishment_description,
+        'address' => $request->establishment_address,
+        'geolocation_longitude' => $request->establishment_geolocation_longitude,
+        'geolocation_latitude' => $request->establishment_geolocation_latitude,
+        'mode_of_access' => implode(', ', $request->establishment_mode_of_access),
+        'contact_number' => $request->establishment_contact_number,
+        'path' => $path,
+        'business_type_id' => $request->establishment_type_of_business
+      ]);
+    }
+    else {
+      $establishment->update([
+        'user_id' => $request->establishment_owner,
+        'name' => $request->establishment_name,
+        'description' => $request->establishment_description,
+        'address' => $request->establishment_address,
+        'geolocation_longitude' => $request->establishment_geolocation_longitude,
+        'geolocation_latitude' => $request->establishment_geolocation_latitude,
+        'mode_of_access' => implode(', ', $request->establishment_mode_of_access),
+        'contact_number' => $request->establishment_contact_number,
+        'business_type_id' => $request->establishment_type_of_business
+      ]);
+    }
 
     return redirect('/establishments')->with('update', 'Account updated successfully.');
   }

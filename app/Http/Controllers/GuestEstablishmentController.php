@@ -18,7 +18,8 @@ class GuestEstablishmentController extends Controller
         ->select('establishments.*', 'users.name as owner')
         ->where('establishments.status', 'active')
         ->where('business_type_id', $businessType->id)->get();
-      return view('destinations', compact('businessType', 'establishments'));
+        $myname = "Joyce";
+      return view('destinations', compact('businessType', 'establishments', 'myname'));
     }
 
     public function welcome()
@@ -27,6 +28,7 @@ class GuestEstablishmentController extends Controller
         ->select('establishments.*', 'users.name as owner')
         ->where('establishments.status', 'active')
         ->get();
+        
       return view('welcome', compact('establishments'));
     }
 

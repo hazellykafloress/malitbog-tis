@@ -134,10 +134,10 @@ final class EstablishmentTable extends PowerGridComponent
         ->class('btn btn-info btn-sm')
         ->route('establishments.show', ['establishment' => $row]),
 
-      // Button::add('edit')
-      //   ->slot('Edit')
-      //   ->class('btn btn-success btn-sm')
-      //   ->route('establishments.edit', ['establishment' => $row->id], '_blank'),
+      Button::add('edit')
+        ->slot('Edit')
+        ->class('btn btn-success btn-sm')
+        ->route('establishments.edit', ['establishment' => $row->id], '_blank'),
 
       Button::add('delete')
         ->slot('Delete')

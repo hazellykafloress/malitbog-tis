@@ -5,7 +5,7 @@
 @section('content')
     <div class="row">
         <div class="col-xl">
-            <form method="POST" action="{{ route('establishments.store') }}">
+            <form method="POST" action="{{ route('establishments.store') }}" enctype="multipart/form-data">
                 @csrf
                 <div class="d-flex justify-content-end mb-3">
                     <button type="submit" class="btn btn-primary d-flex gap-1">
@@ -39,6 +39,17 @@
                                 <small class="text-danger">{{ $message }}</small>
                             @enderror
                         </div>
+                        
+                        <div class="mb-6">
+                            <label class="form-label" for="image">Image<small
+                                class="text-danger">*</small></label>
+                            <input type="file" name="image" id="image" class="form-control"
+                                value="{{ old('image') }}" accept="image/*">
+                            @error('image')
+                                <small class="text-danger">{{ $message }}</small>
+                            @enderror
+                        </div>
+                        
                         <div class="mb-6">
                             <label class="form-label" for="establishment_name">Name <small
                                     class="text-danger">*</small></label>

@@ -37,7 +37,7 @@ class Review extends Component
     
 
     if ($existingReview) {
-      return redirect('/destinations'.'/'.$business_type->business_type_id.'/'.$this->establishmentId)->with('error', 'You have already reviewed this establishment from this IP address.');
+      return redirect('/destinations'.'/'.$business_type->business_type_id.'/'.$this->establishmentId)->with('error', 'You have already reviewed this establishment!');
     }
 
     ModelsReview::create([

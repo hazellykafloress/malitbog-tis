@@ -103,6 +103,31 @@
         });
     </script>
     @endif
+    @if(session('error'))
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            Swal.fire({
+                title: 'Success',
+                text: "Somethong went wrong!",
+                icon: 'error',
+                confirmButtonColor: '#3085d6',
+                confirmButtonText: 'OK',
+                customClass: {
+                    title: 'alert-title',
+                    icon: 'alert-icon',
+                    confirmButton: 'alert-confirmButton',
+                    cancelButton: 'alert-cancelButton',
+                    container: 'alert-container',
+                    popup: 'alert-popup'
+                },
+            }).then(() => {
+                @php
+                    session()->forget('success');
+                @endphp
+            });
+        });
+    </script>
+    @endif
 
     @if(session('update'))
     <script>
